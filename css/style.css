@@ -1,0 +1,168 @@
+
+.Title-me .heading p{
+    color: #fff;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+    font-weight: 100;
+    letter-spacing: 7px;
+}
+
+.overlay {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 3;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.slides-navigation{
+    z-index: 6;
+}
+
+.slides-navigation .prev,
+.slides-navigation .next {
+	width: 37px;
+	height: 37px;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.slides-navigation a.prev {
+	left: 20px;
+	background-image: url(../img/icons/prev.png);
+}
+
+.slides-navigation a.next {
+	right: 20px;
+	background-image: url(../img/icons/next.png);
+}
+
+.Title-me{
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    top: 50%;
+    z-index: 5;
+    margin-top: -125px;
+    text-align: center;
+}
+
+.Title-me .heading p{
+    color: #fff;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+    font-weight: 100;
+    letter-spacing: 7px;
+}
+
+.Title-me .heading .main{
+    font-size: 50px;
+}
+
+.Title-me .heading .sub{
+    font-size: 23px;
+}
+
+.aboutImage{
+   max-width: 100%;
+    border-radius: 50%;
+
+}
+
+.section{
+	padding: 100px 0;
+}
+
+.mycol{
+    margin-top: 45px;
+
+}
+
+.skillsSec{
+    background-color: #1B9CFC;
+    color: #fff;
+}
+
+.skill{
+    text-align: center;
+    margin-left: 10px;
+}
+
+.chart{
+    position: relative;
+    width: 152px;
+    height: 152px;
+    text-align: center;
+    display: inline-block;
+}
+
+.chart canvas{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.chart .percent{
+    color: #fff;
+    line-height: 152px;
+    display: inline-block;
+    font-size: 26px;
+}
+
+
+.chart .percent:after{
+  content: '%';
+}
+
+.squareItem{
+    margin-left: 35px;
+    position: relative;
+}
+
+
+.squareInnerContainer{
+    position: relative;
+    padding: 50px 15px 35px;
+    border: 2px solid #444;
+    border-top: none;
+    text-align: center;
+}
+
+.squareInnerContainer:before,
+.squareInnerContainer:after{
+	position: absolute;
+	content: '';
+	width: 30%;
+	top: 0;
+	border-bottom: 2px solid #444;
+}
+
+.squareInnerContainer:before{
+    right: 0;
+}
+
+.squareInnerContainer:after{
+    left: 0;
+}
+
+.squareContent h2{
+	font-size: 56px;
+	margin-bottom: 10px;
+	font-weight: 400;
+    color: #1B9CFC
+}
+
+.squareContent h3{
+	font-size: 15px;
+	margin: 0;
+	font-weight: 600;
+}
+
+.squareIcon{
+	position: absolute;
+	left: 50%;
+	top: -30px;
+	width: 40%;
+	height: 50px;
+	font-size: 45px;
+	margin-left: -40px;
+
+}
