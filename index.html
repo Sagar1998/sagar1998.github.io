@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Sagar Kuvar — Cybersecurity, VAPT &amp; Security Automation</title>
     <meta name="description"
         content="Sagar Kuvar is a cybersecurity professional and Deputy Manager at Bombay Stock Exchange (BSECL), working across VAPT, SAST, DAST, compliance and security automation.">
@@ -30,7 +30,12 @@
         // Apply the saved theme before first paint to avoid a flash.
         (function () {
             var root = document.documentElement;
-            root.classList.add('js');
+            root.classList.add('js', 'is-loading');
+            // Failsafe: never leave the loading screen up if the main script fails.
+            setTimeout(function () {
+                root.classList.remove('is-loading');
+                root.classList.add('is-loaded');
+            }, 6000);
             try {
                 var saved = localStorage.getItem('theme');
                 if (saved === 'light' || saved === 'dark') root.setAttribute('data-theme', saved);
@@ -59,6 +64,22 @@
 </head>
 
 <body>
+    <div class="loader" id="loader">
+        <div class="loader__box">
+            <div class="loader__mark" aria-hidden="true">
+                <span class="corner corner--tl"></span><span class="corner corner--tr"></span>
+                <span class="corner corner--bl"></span><span class="corner corner--br"></span>
+                <span class="loader__sk">SK</span>
+                <span class="loader__scan"></span>
+            </div>
+            <p class="loader__name">Sagar Kuvar</p>
+            <p class="loader__status" role="status"><span class="prompt">&gt;</span> <span
+                    id="loaderText">Initialising secure session</span></p>
+            <div class="loader__bar" aria-hidden="true"><span id="loaderBar"></span></div>
+            <p class="loader__pct" aria-hidden="true"><span id="loaderPct">0</span>%</p>
+        </div>
+    </div>
+
     <a class="skip" href="#main">Skip to content</a>
     <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
 
@@ -101,16 +122,19 @@
         <!-- ============ HERO ============ -->
         <section class="hero" id="top">
             <div class="hero__grid" aria-hidden="true"></div>
+            <canvas class="hero__net" id="net" aria-hidden="true"></canvas>
             <div class="wrap hero__inner">
                 <div class="hero__copy">
-                    <p class="eyebrow"><span class="dot"></span>Deputy Manager · Bombay Stock Exchange (BSECL)</p>
-                    <h1>Sagar <span class="accent">Kuvar</span></h1>
-                    <p class="hero__lead">I find the weak points before attackers do, then build the automation that
+                    <p class="eyebrow enter" style="--i:0"><span class="dot"></span>Deputy Manager · Bombay Stock Exchange (BSECL)</p>
+                    <h1 class="enter" style="--i:1">Sagar <span class="accent">Kuvar</span></h1>
+                    <p class="hero__role enter" style="--i:2" aria-hidden="true"><span class="prompt">&gt;</span> <span
+                            id="typed">VAPT &amp; penetration testing</span><span class="caret"></span></p>
+                    <p class="hero__lead enter" style="--i:3">I find the weak points before attackers do, then build the automation that
                         keeps them closed.</p>
-                    <p class="hero__sub">Cybersecurity professional with 3+ years across VAPT, SAST, DAST, red
+                    <p class="hero__sub enter" style="--i:4">Cybersecurity professional with 3+ years across VAPT, SAST, DAST, red
                         teaming and regulatory compliance, backed by a developer's habit of scripting away anything
                         done twice.</p>
-                    <div class="hero__cta">
+                    <div class="hero__cta enter" style="--i:5">
                         <a class="btn btn--primary" href="file/resume.pdf" target="_blank" rel="noopener">
                             <svg viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M12 4v11M7 11l5 5 5-5M5 20h14" />
@@ -119,16 +143,18 @@
                         </a>
                         <a class="btn" href="#contact">Get in touch</a>
                     </div>
-                    <ul class="hero__social" aria-label="Profiles">
+                    <ul class="hero__social enter" style="--i:6" aria-label="Profiles">
                         <li><a href="https://github.com/Sagar1998" target="_blank" rel="noopener">GitHub</a></li>
                         <li><a href="https://linkedin.com/in/sagarkuvar" target="_blank" rel="noopener">LinkedIn</a></li>
                         <li><a href="mailto:skuvar4@gmail.com">Email</a></li>
                     </ul>
                 </div>
 
-                <figure class="portrait">
+                <figure class="portrait enter" style="--i:2">
                     <div class="portrait__frame">
-                        <img src="images/profile.jpg" alt="Portrait of Sagar Kuvar" width="900" height="946">
+                        <img src="images/profile.jpg" srcset="images/profile-480.jpg 456w, images/profile.jpg 856w"
+                            sizes="(max-width: 860px) 190px, 360px" alt="Portrait of Sagar Kuvar" width="856"
+                            height="900" decoding="async" fetchpriority="high">
                         <span class="corner corner--tl"></span><span class="corner corner--tr"></span>
                         <span class="corner corner--bl"></span><span class="corner corner--br"></span>
                     </div>
@@ -140,7 +166,7 @@
             </div>
 
             <div class="wrap">
-                <dl class="stats">
+                <dl class="stats enter" style="--i:7">
                     <div class="stat">
                         <dt>Years in security &amp; analytics</dt>
                         <dd><span data-count="3">3</span>+</dd>
@@ -160,6 +186,10 @@
                 </dl>
             </div>
         </section>
+
+        <div class="marquee" aria-hidden="true">
+            <ul class="marquee__track"><li>Burp Suite</li><li>Nessus</li><li>Tenable SC</li><li>OWASP ZAP</li><li>Fortify</li><li>Frida</li><li>MobSF</li><li>Python</li><li>PowerShell</li><li>Flask</li><li>Django</li><li>Docker</li><li>Jenkins</li><li>Ansible</li><li>Power BI</li><li>Alteryx</li><li>SEBI CSCRF</li><li>NCIIPC</li><li>Burp Suite</li><li>Nessus</li><li>Tenable SC</li><li>OWASP ZAP</li><li>Fortify</li><li>Frida</li><li>MobSF</li><li>Python</li><li>PowerShell</li><li>Flask</li><li>Django</li><li>Docker</li><li>Jenkins</li><li>Ansible</li><li>Power BI</li><li>Alteryx</li><li>SEBI CSCRF</li><li>NCIIPC</li></ul>
+        </div>
 
         <!-- ============ ABOUT ============ -->
         <section class="section" id="about">
@@ -537,6 +567,12 @@
             <p><a href="#top">Back to top ↑</a></p>
         </div>
     </footer>
+
+    <a class="iconbtn totop" id="toTop" href="#top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 19V6M6 11l6-6 6 6" />
+        </svg>
+    </a>
 
     <script src="js/main.js" defer></script>
 </body>
